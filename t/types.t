@@ -6,7 +6,6 @@ use Test::Fatal;
 {
     package MyTypes;
     use MooseX::Types::Moose qw/Str/;
-    use Moose::Util::TypeConstraints;
     use MooseX::Types -declare => [qw/CustomType/];
 
     BEGIN {
@@ -21,7 +20,7 @@ use Test::Fatal;
     use MooseX::Method::Signatures;
     BEGIN { MyTypes->import('CustomType') };
     use MooseX::Types::Moose qw/ArrayRef/;
-    use namespace::clean;
+    use namespace::clean 0.19;
 
     method foo (CustomType $bar) { }
 
